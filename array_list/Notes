@@ -1,0 +1,7 @@
+Question:
+why does printing an array directly in java prints the address of the object and not the array itself?
+
+In Java, when you try to print any object using System.out.println(), the toString() method of that
+object is called by default. If an object does not override the toString() method,
+it inherits the implementation from the Object class, which returns a string in this format:
+ClassName@hashcode
