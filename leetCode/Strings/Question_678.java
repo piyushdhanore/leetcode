@@ -28,12 +28,37 @@ public class Question_678 {
 
     public static void main(String[] args) {
 
-        String s = "(*)";
+//        String s = "((*))";
+//        String s = "(*))";
+//        String s = "()";
+//        String s = "((*))";
+//        String s = "((((((((((((((((((((((((((((((((((((((((((((((";
+//        String s = "(((((()*)(*)*))())())(()())())))((**)))))(()())()";
+        String s = "((()((()))(())()())*)(()(())()))()))))(((*(()(((()()(())()))*(())*)(()(()(()()()))()(()()()";
         System.out.println(checkValidString(s));
     }
 
     public static boolean checkValidString(String s) {
 
-        return false;
+        int paraCount = 0, asterisk=0;
+//        int open = 0, closed =0;
+
+        if(s.charAt(0)==')') return false;
+        else if (!s.contains(")")) return false;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            if(s.charAt(i)=='(') {
+                paraCount++;
+//                open++;
+            } else if (s.charAt(i)==')') {
+                paraCount--;
+//                closed++;
+            }
+        }
+
+        if ((paraCount==1 || paraCount==-1) && s.contains("*")) return true;
+
+        return paraCount >= 0 && (paraCount % 2 == 0);
     }
 }

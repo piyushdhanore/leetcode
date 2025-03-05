@@ -31,19 +31,38 @@ public class Question_20 {
 
     public static void main(String[] args) {
 
-        String s = "()";
+//        String s = "()";
+//        String s = "()[]{}";
+//        String s = "(]";
+        String s = "([])";
         System.out.println(isValid(s));
     }
 
     public static boolean isValid(String s) {
 
-        int curOpenCount = 0, roucurOpenCountCount=0, curlCount=0;
+        int curlCount = 0, roundCount=0, squareCount=0;
+
+        if (s.contains(")") && !s.contains("(")) return false;
+        else if (s.contains("]") && !s.contains("[")) return false;
+        if (s.contains("}") && !s.contains("{")) return false;
 
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i)=='(') {
-
+            if ((s.charAt(i)=='(')) {
+                roundCount++;
+            } else if (s.charAt(i)=='[') {
+                squareCount++;
+            } else if (s.charAt(i)=='{') {
+                curlCount++;
+            } else if (s.charAt(i)==')') {
+                roundCount--;
+            } else if (s.charAt(i)==']') {
+                squareCount--;
+            } else if (s.charAt(i)=='}') {
+                curlCount--;
             }
         }
+
+        if(curlCount==0 && roundCount==0 && squareCount==0) return true;
 
         return false;
     }
