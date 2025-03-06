@@ -18,11 +18,14 @@ package leetCodeDaily;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Question_2965 {
     public static void main(String[] args) {
-        int[][] nums = {{1,3},{2,2}};
+//        int[][] nums = {{1,3},{2,2}};
+//        int[][] nums = {{1,2},{4,4}};
+        int[][] nums = {{9,1,7},{8,9,2},{3,4,6}};
 
         int [] res = findMissingAndRepeatedValues(nums);
         System.out.println(Arrays.toString(res));
@@ -39,12 +42,26 @@ public class Question_2965 {
             }
         }
 
-        int maxLength = list.size();
+//        System.out.println(list);
 
-        for (int i = 1; i <=grid.length; i++) {
+        Collections.sort(list);
+        System.out.println(list);
 
+        int maxLength = list.size(), index=0;
+        System.out.println(maxLength);
+
+        for (int i = 0; i <list.size()-1; i++) {
+
+            if (list.get(i).equals(list.get(i+1))) {
+                res[0] = list.get(i);
+            }
+            if (!list.contains(i+1)) {
+                res[1] = i + 1;
+            } else if (!list.contains(maxLength)){
+                res[1] = maxLength;
+            }
         }
 
-        return new int[2];
+        return res;
     }
 }
