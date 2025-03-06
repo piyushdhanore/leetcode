@@ -1,16 +1,50 @@
 package leetCodeDaily;
 /*
-Count Total Number of Colored Cells
-There exists an infinitely large two-dimensional grid of uncolored unit cells. You are given a positive integer n, indicating that you must do the following routine for n minutes:
+    Count Total Number of Colored Cells
+    There exists an infinitely large two-dimensional grid of uncolored unit cells. You are given a positive integer n, indicating that you must do the following routine for n minutes:
 
-At the first minute, color any arbitrary unit cell blue.
-Every minute thereafter, color blue every uncolored cell that touches a blue cell.
-Below is a pictorial representation of the state of the grid after minutes 1, 2, and 3.
+    At the first minute, color any arbitrary unit cell blue.
+    Every minute thereafter, color blue every uncolored cell that touches a blue cell.
+    Below is a pictorial representation of the state of the grid after minutes 1, 2, and 3.
+    Return the number of colored cells at the end of n minutes.
 
+    Example 1:
+    Input: n = 1
+    Output: 1
+    Explanation: After 1 minute, there is only 1 blue cell, so we return 1.
+
+    Example 2:
+    Input: n = 2
+    Output: 5
+    Explanation: After 2 minutes, there are 4 colored cells on the boundary and 1 in the center, so we return 5.
  */
 
 public class Question_2579 {
     public static void main(String[] args) {
 
+        int n = 3;
+
+        System.out.println(coloredCells(n));
+        System.out.println(coloredCells2(n));
     }
+    public static long coloredCells(int n) {
+
+        long cells = 1;
+        int columns = 4;
+
+        while (--n>0){
+
+            cells+=columns;
+            columns+=4;
+
+        }
+
+        return  cells;
+    }
+
+    public static long coloredCells2(int n) {
+
+        return  1+(long)2*n*(n-1);
+    }
+
 }

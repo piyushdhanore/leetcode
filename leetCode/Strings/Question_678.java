@@ -35,7 +35,7 @@ public class Question_678 {
 //        String s = "((((((((((((((((((((((((((((((((((((((((((((((";
 //        String s = "(((((()*)(*)*))())())(()())())))((**)))))(()())()";
         String s = "((()((()))(())()())*)(()(())()))()))))(((*(()(((()()(())()))*(())*)(()(()(()()()))()(()()()";
-        System.out.println(checkValidString(s));
+        System.out.println(checkValidString3(s));
     }
 
     public static boolean checkValidString(String s) {
@@ -60,5 +60,46 @@ public class Question_678 {
         if ((paraCount==1 || paraCount==-1) && s.contains("*")) return true;
 
         return paraCount >= 0 && (paraCount % 2 == 0);
+    }
+
+    public static void checkValidString2(String s) {
+
+        int open = 0, closed =0;
+        for (int i = 0; i < s.length(); i++) {
+
+            if(s.charAt(i)=='(') {
+                open++;
+            } else if (s.charAt(i)==')') {
+                closed++;
+            }
+        }
+
+        System.out.println("Open parenthesis are: "+open);
+        System.out.println("closed parenthesis are: "+closed);
+    }
+
+    public static boolean checkValidString3(String s) {
+
+        int paraCount = 0, asterisk=0;
+
+        if(s.charAt(0)==')') return false;
+        else if (!s.contains(")")) return false;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            if(s.charAt(i)=='(') {
+                paraCount++;
+            } else if (s.charAt(i)==')') {
+                paraCount--;
+            } else if (s.charAt(i)=='*') {
+                if (paraCount<0){
+                    paraCount++;
+                } else if (paraCount>0){
+                    paraCount--;
+                }
+            }
+        }
+
+        return paraCount == 0;
     }
 }
