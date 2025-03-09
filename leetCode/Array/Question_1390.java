@@ -25,17 +25,70 @@ Output: 0
 public class Question_1390 {
     public static void main(String[] args) {
 
-        int [] nums = {21,4,7};
+//        int [] nums = {21,4,7};
+//        int [] nums = {21,21};
+//        int [] nums = {1,2,3,4,5};
+        int [] nums = {1,2,3,4,5,6,7,8,9,10};
 
         System.out.println(sumFourDivisors(nums));
     }
 
+//    public static int sumFourDivisors(int[] nums) {
+//
+//        long output = 0;
+//
+//        for(int div: nums) {
+//
+//            int out =0, divisors = 1;
+//
+//            for (int i = 1; i <=div/2; i++) {
+//
+//                if (div%i==0) {
+//                    out+=i;
+//                    divisors++;
+//                }
+//            }
+//
+//            if (divisors==4){
+//                output+=(out+div);
+//            }
+//        }
+//
+//
+//
+//        return output;
+//    }
+
     public static int sumFourDivisors(int[] nums) {
 
-        for(int div: nums) {
+        int totalSum = 0;
 
+        for(int num : nums) {
+
+            int sum =0, count = 0;
+
+            for (int i = 1; i*i <= num; i++) {
+
+                if (num %i==0) {
+                   count++;
+                   sum+=i;
+                   if (i!=num/i){
+                       count++;
+                       sum+=num/i;
+                   }
+                }
+                if (count>4) break;
+            }
+
+            if (count ==4){
+                totalSum +=sum;
+            }
         }
 
-        return 0;
+
+
+        return totalSum;
     }
+
+//    public static int factors()
 }
