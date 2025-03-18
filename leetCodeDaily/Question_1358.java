@@ -40,14 +40,23 @@ public class Question_1358 {
 
         String req = "abc";
 
+//        for (int i = 0; i < s.length(); i++) {
+//            for (int len = 3; i+ len <=s.length(); len++) {
+//                System.out.println(s.substring(i,i+len));
+//               if ( s.substring(i, i+len).contains(req)){
+//                   output++;
+//               }
+//            }
+//        }
+
         for (int i = 0; i < s.length(); i++) {
-            for (int j = 3; i+j <=s.length(); j++) {
-               if ( s.substring(i,j).contains(req)){
+            for (int len = 3; i+ len <=s.length(); len++) {
+                System.out.println(s.substring(i,len));
+               if ( s.substring(i, len).contains(req)){
                    output++;
                }
             }
         }
-
         return output;
     }
 }
